@@ -69,7 +69,7 @@
  */
 
 const express = require('express');
-const { check } = require('express-validator');
+const { check, param } = require('express-validator');
 const { createTask, getTasks, getTaskById, updateTask, deleteTask } = require('../controllers/taskController');
 
 const router = express.Router();
