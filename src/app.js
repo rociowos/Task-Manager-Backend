@@ -20,9 +20,14 @@ app.use(express.json());
 
 // Conectar a MongoDB
 const MONGO_URI = process.env.MONGO_URI;
-mongoose.connect(MONGO_URI)
+mongoose.connect(MONGO_URI, {
+  useNewUrlParser: true,   // Usar el nuevo analizador de URL de MongoDB
+  useUnifiedTopology: true,  // Usar el nuevo motor de topología
+  serverSelectionTimeoutMS: 50000,  // Aumentar el tiempo de espera (50 segundos)
+})
   .then(() => console.log('Conectado a MongoDB'))
   .catch(err => console.error('Error al conectar a MongoDB:', err));
+
 
 // Swagger setup
 const swaggerOptions = {
